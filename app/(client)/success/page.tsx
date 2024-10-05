@@ -9,11 +9,12 @@ const SuccessPage = ({ userId }: { userId: string | null }) => {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get("session_id");
     const productId = searchParams.get("productId");
-    const startDate = new Date(searchParams.get("startDate") as string);
-    const endDate = new Date(searchParams.get("endDate") as string);
+
+    const startDate = searchParams.get("startDate") ? new Date(searchParams.get("startDate") as string) : null;
+    const endDate = searchParams.get("endDate") ? new Date(searchParams.get("endDate") as string) : null;
 
     useEffect(() => {
-        if (sessionId && productId && userId) {
+        if (sessionId && productId && userId && startDate && endDate) {
             const reservationData = {
                 userId,
                 productId,
@@ -28,8 +29,10 @@ const SuccessPage = ({ userId }: { userId: string | null }) => {
                 .catch((error) => {
                     toast.error("Error creating reservation: " + error.message);
                 });
+        } else {
+            toast.error("Invalid reservation data. Dates cannot be null.");
         }
-    }, [sessionId, productId, userId]);
+    }, [sessionId, productId, userId, startDate, endDate]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

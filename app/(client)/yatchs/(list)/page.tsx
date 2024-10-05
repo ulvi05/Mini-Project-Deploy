@@ -19,7 +19,7 @@ export default async function Yatch({ searchParams }: Props) {
         const searchValue = sort.split('_')[1];
         orderBy[searchKey] = searchValue;
     }
-    const filter: Record<string, any> = {};
+    const filter: Record<string, { id: { in: string[] } }> = {};
 
     Object.keys(filters).forEach((key) => {
         filter[key] = {

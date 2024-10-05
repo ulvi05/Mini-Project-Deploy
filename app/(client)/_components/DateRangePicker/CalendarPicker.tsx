@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateRange } from 'react-date-range';
+import { DateRange, RangeKeyDict } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePickerProps } from '@/types';
@@ -20,11 +20,19 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 }) => {
     const [state, setState] = useState(ranges);
 
-    const handleRangeChange = (item: any) => {
-        const { selection } = item;
-        setState([selection]);
-        onDateChange({ startDate: selection.startDate, endDate: selection.endDate });
+    const handleRangeChange = (item: RangeKeyDict) => {
+        const selection = item['selection']; // Doğru key ile erişim sağlanıyor
+        if (selection) {
+            setState([selection]);
+
+            // startDate ve endDate için null kontrolü yapılıyor
+            const startDate = selection.startDate ?? null;
+            const endDate = selection.endDate ?? null;
+
+            onDateChange({ startDate, endDate });
+        }
     };
+
     const disableDate = (date: Date) => {
         return reservedDates.some(reservedDate =>
             date >= reservedDate && date <= new Date(reservedDate.setDate(reservedDate.getDate() + 1))

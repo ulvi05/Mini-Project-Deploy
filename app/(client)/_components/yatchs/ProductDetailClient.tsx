@@ -8,7 +8,6 @@ import DateRangePicker from '../../_components/DateRangePicker/CalendarPicker';
 import { Product } from '@prisma/client';
 import { Button } from '@/components/ui/button';
 import PriceCalculator from '../price-calculator/PriceCalculator';
-import { createReservation } from '@/actions/createReservation';
 import { createCheckoutSession } from '@/actions/checkout';
 import { toast } from 'sonner';
 

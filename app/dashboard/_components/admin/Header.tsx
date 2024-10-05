@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '@/public/assets/logo.svg'
-import { SignInButton, UserButton } from '@clerk/nextjs'
-import { auth } from '@clerk/nextjs/server'
+import { UserButton } from '@clerk/nextjs'
 
 const AdminHeader = () => {
     return (

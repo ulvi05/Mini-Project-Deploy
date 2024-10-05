@@ -5,12 +5,9 @@ import { UploadThingError } from "uploadthing/server";
 import { ClientUploadedFileData } from "uploadthing/types";
 
 type Props = {
-    onClientUploadComplete: ((res: ClientUploadedFileData<{
-        uploadedBy: string;
-    }>[]) => Promise<void>) | undefined;
-
-    onUploadError: ((e: UploadThingError<any>) => Promise<void>) | undefined
-}
+    onClientUploadComplete: (res: ClientUploadedFileData<{ uploadedBy: string; }>[]) => Promise<void> | void;
+    onUploadError: (e: UploadThingError<any>) => Promise<void> | void;
+};
 
 export default function Uploader({ onClientUploadComplete, onUploadError }: Props): JSX.Element {
     return (
@@ -18,9 +15,7 @@ export default function Uploader({ onClientUploadComplete, onUploadError }: Prop
             <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={onClientUploadComplete}
-                onUploadError={(err) => {
-                    console.log(err);
-                }}
+                onUploadError={onUploadError}
             />
         </main>
     );

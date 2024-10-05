@@ -1,6 +1,6 @@
 'use client'
 
-import React, { PropsWithChildren, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogBackdrop,
@@ -24,19 +24,6 @@ const sortOptions = [
     { name: 'Newest', slug: SortOrder.DATE_DESC },
     { name: 'Price: Low to High', slug: SortOrder.PRICE_ASC },
     { name: 'Price: High to Low', slug: SortOrder.PRICE_DESC },
-]
-const filters = [
-    {
-        id: 'category',
-        name: 'Category',
-        options: [
-            { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-            { value: 'sale', label: 'Sale', checked: false },
-            { value: 'travel', label: 'Travel', checked: true },
-            { value: 'organization', label: 'Organization', checked: false },
-            { value: 'accessories', label: 'Accessories', checked: false },
-        ],
-    },
 ]
 
 function classNames(...classes: string[]) {
@@ -103,7 +90,7 @@ export default function Filter({ children, categories }: Props) {
             query,
         });
         router.push(url);
-    }, [filters, selectedSortOrder]);
+    }, [filters, selectedSortOrder, router]);
 
     return (
         <div className="bg-white">
@@ -235,17 +222,16 @@ export default function Filter({ children, categories }: Props) {
                             <form className="hidden lg:block">
                                 <h3 className="sr-only">Categories</h3>
                                 <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-
                                 </ul>
 
                                 {filters.map((section) => (
-                                    <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6">
+                                    <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
                                         <h3 className="-my-3 flow-root">
-                                            <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                                            <DisclosureButton className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
                                                 <span className="font-medium text-gray-900">{section.name}</span>
                                                 <span className="ml-6 flex items-center">
-                                                    <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
-                                                    <MinusIcon aria-hidden="true" className="h-5 w-5 [.group:not([data-open])_&]:hidden" />
+                                                    <PlusIcon className="h-5 w-5 [.group:not([data-open])_&]:hidden" aria-hidden="true" />
+                                                    <MinusIcon className="h-5 w-5 group-data-[open]:hidden" aria-hidden="true" />
                                                 </span>
                                             </DisclosureButton>
                                         </h3>
@@ -272,7 +258,9 @@ export default function Filter({ children, categories }: Props) {
                                     </Disclosure>
                                 ))}
                             </form>
-                            <div className='lg:col-span-3'>{children}</div>
+
+                            {/* Product grid */}
+                            <div className="lg:col-span-3">{children}</div>
                         </div>
                     </section>
                 </main>

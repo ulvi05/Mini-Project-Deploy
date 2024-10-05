@@ -144,7 +144,7 @@ export default function Home() {
             Your Care, Our Value
           </h4>
           <p className="mb-3 leading-[1.78] text-white md:text-base xl:mb-6 3xl:text-lg text-sm text-left">
-            Find and book your dream boat through Yacht. Charter Fleet, the world's leading luxury boat comparison site.
+            Find and book your dream boat through Yacht. Charter Fleet, the world&apos;s leading luxury boat comparison site.
           </p>
           <Button>
             <Link href={'/yatchs'}>View Boats</Link>
