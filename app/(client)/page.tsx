@@ -56,7 +56,7 @@ export default function Home() {
           <div className="flex flex-col gap-5 mt-4 mb-6 w-full">
           </div>
           <Button className="w-full p-5" type="button">
-            Find Boat
+            <Link href={'/yatchs'}>Find Boat</Link>
           </Button>
         </form>
       </main>
@@ -131,20 +131,20 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-3 px-0 md:px-3 lg:my-8 2xl:px-4 3xl:px-5 4xl:px-6 relative">
+      <div className="relative my-3 px-0 md:px-3 lg:my-8 2xl:px-4 3xl:px-5 4xl:px-6">
         <Image
-          className="aspect-[18/5] bg-gray-200 object-cover rounded-xl md:rounded-2xl"
+          className="aspect-[18/5] bg-gray-200 object-cover rounded-xl md:rounded-2xl w-full"
           src={BoatInfo}
           alt="boat-home"
           width={1800}
           height={400}
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-start z-20 px-8 py-9 md:px-0 md:py-0 pl-6 md:pl-10 max-w-[450px] xl:max-w-[513px]">
-          <h4 className="text-left text-2xl font-bold text-white md:text-3xl xl:mb-6 3xl:text-5xl mb-3">
+        <div className="absolute inset-0 flex flex-col justify-center items-start z-20 px-6 py-8 md:pl-10 max-w-[90%] sm:max-w-[450px] xl:max-w-[513px]">
+          <h4 className="text-left text-white font-bold text-2xl sm:text-3xl xl:text-4xl 3xl:text-5xl mb-3 xl:mb-6">
             Your Care, Our Value
           </h4>
-          <p className="mb-3 leading-[1.78] text-white md:text-base xl:mb-6 3xl:text-lg text-sm text-left">
-            Find and book your dream boat through Yacht. Charter Fleet, the world&apos;s leading luxury boat comparison site.
+          <p className="mb-3 text-sm sm:text-base xl:text-lg text-white leading-relaxed">
+            Find and book your dream boat through Yacht. Charter Fleet, the world's leading luxury boat comparison site.
           </p>
           <Button>
             <Link href={'/yatchs'}>View Boats</Link>
