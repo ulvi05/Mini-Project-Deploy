@@ -1,11 +1,16 @@
-"use client";
+// app/(client)/success/page.tsx
 
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { GetServerSideProps } from 'next';
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { createReservation } from "@/actions/createReservation";
 import { toast } from 'sonner';
 
-const SuccessPage = ({ userId }: { userId: string | null }) => {
+type SuccessPageProps = {
+    userId: string | null;
+};
+
+const SuccessPage = ({ userId }: SuccessPageProps) => {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get("session_id");
     const productId = searchParams.get("productId");
@@ -42,6 +47,15 @@ const SuccessPage = ({ userId }: { userId: string | null }) => {
             </p>
         </div>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { userId } = context.query;
+    return {
+        props: {
+            userId: userId || null,
+        },
+    };
 };
 
 export default SuccessPage;
