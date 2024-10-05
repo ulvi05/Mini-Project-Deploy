@@ -1,6 +1,5 @@
 "use client";
 
-import { GetServerSideProps } from 'next';
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { createReservation } from "@/actions/createReservation";
