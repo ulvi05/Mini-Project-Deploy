@@ -49,13 +49,4 @@ const SuccessPage = ({ userId }: SuccessPageProps) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { userId } = context.query;
-    return {
-        props: {
-            userId: userId || null,
-        },
-    };
-};
-
 export default SuccessPage;
