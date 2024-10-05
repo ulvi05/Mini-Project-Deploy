@@ -3,18 +3,18 @@ import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
-const auth = (_req: Request) => ({ id: "fakeId" }); // Fake auth function
+const auth = () => ({ id: "fakeId" });
 
 export const ourFileRouter = {
     imageUploader: f({ image: { maxFileSize: "128MB" }, video: { maxFileSize: "128MB" } })
-        .middleware(async ({ req: _req }) => {
-            const user = auth(_req);
+        .middleware(async () => {
+            const user = auth();
 
             if (!user) throw new UploadThingError("Unauthorized");
 
             return { userId: user.id };
         })
-        .onUploadComplete(async ({ metadata, file: _file }) => {
+        .onUploadComplete(async ({ metadata }) => {
             return { uploadedBy: metadata.userId };
         }),
 } satisfies FileRouter;

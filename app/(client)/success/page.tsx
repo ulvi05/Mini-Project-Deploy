@@ -10,10 +10,10 @@ const SuccessPage = ({ userId }: { userId: string | null }) => {
     const sessionId = searchParams.get("session_id");
     const productId = searchParams.get("productId");
 
-    const startDate = searchParams.get("startDate") ? new Date(searchParams.get("startDate") as string) : null;
-    const endDate = searchParams.get("endDate") ? new Date(searchParams.get("endDate") as string) : null;
-
     useEffect(() => {
+        const startDate = searchParams.get("startDate") ? new Date(searchParams.get("startDate") as string) : null;
+        const endDate = searchParams.get("endDate") ? new Date(searchParams.get("endDate") as string) : null;
+
         if (sessionId && productId && userId && startDate && endDate) {
             const reservationData = {
                 userId,
@@ -32,7 +32,7 @@ const SuccessPage = ({ userId }: { userId: string | null }) => {
         } else {
             toast.error("Invalid reservation data. Dates cannot be null.");
         }
-    }, [sessionId, productId, userId, startDate, endDate]);
+    }, [sessionId, productId, userId, searchParams]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
