@@ -1,4 +1,4 @@
-// app/(client)/success/page.tsx
+"use client";
 
 import { GetServerSideProps } from 'next';
 import { useEffect } from 'react';
