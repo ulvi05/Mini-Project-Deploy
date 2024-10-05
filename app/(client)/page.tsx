@@ -56,7 +56,7 @@ export default function Home() {
           <div className="flex flex-col gap-5 mt-4 mb-6 w-full">
           </div>
           <Button className="w-full p-5" type="button">
-            <Link href={'/yatchs'}>Find Boat</Link>
+            <Link href="/yatchs">Find Boat</Link>
           </Button>
         </form>
       </main>
